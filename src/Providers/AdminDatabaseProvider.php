@@ -15,6 +15,13 @@ class AdminDatabaseProvider extends ServiceProvider
     public function boot(): void
     {
         /*
+         * Configs.
+         */
+        $this->publishes([
+            __DIR__.'/../config/admin_panel.php' => config_path('admin_panel.php'),
+        ], 'config');
+
+        /*
          * Routes.
          */
         $this->loadRoutesFrom(__DIR__ . '/../../routes/admin/admin.php');

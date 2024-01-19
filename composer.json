@@ -22,6 +22,9 @@
     "laravel": {
       "providers": [
         "AdminDatabaseProvider\\Providers\\AdminDatabaseProvider"
+      ],
+      "files": [
+        "config/admin_panel.php"
       ]
     }
   }
