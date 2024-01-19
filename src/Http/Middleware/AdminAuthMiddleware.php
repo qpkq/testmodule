@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Middleware;
+namespace AdminDatabaseProvider\Http\Middleware;
 
 class AdminAuthMiddleware
 {

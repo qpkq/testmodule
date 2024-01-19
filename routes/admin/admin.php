@@ -2,8 +2,8 @@
 
 namespace AdminDatabaseProvider;
 
+use AdminDatabaseProvider\Http\Controllers\Admin\DatabaseController;
 use Illuminate\Support\Facades\Route;
-use Http\Controllers\Admin\DatabaseController;
 
 /*
 |--------------------------------------------------------------------------

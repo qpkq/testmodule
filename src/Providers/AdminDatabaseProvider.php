@@ -2,7 +2,7 @@
 
 namespace AdminDatabaseProvider\Providers;
 
-use Http\Middleware\AdminAuthMiddleware;
+use AdminDatabaseProvider\Http\Middleware\AdminAuthMiddleware;
 use Illuminate\Support\ServiceProvider;
 
 class AdminDatabaseProvider extends ServiceProvider
