@@ -22,7 +22,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Generative\\AdminDatabaseProvider\\Providers\\AdminDatabaseProvider"
+        "src\\Providers\\AdminDatabaseProvider"
       ]
     }
   }
