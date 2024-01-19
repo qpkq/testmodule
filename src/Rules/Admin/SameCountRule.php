@@ -21,7 +21,7 @@ class SameCountRule
         $requestData = $validator->getData();
 
         if (!is_array($div) || !isset($requestData[$div[0]]) || !is_array($requestData[$div[0]])) {
-            $validator->errors()->add($attribute, 'Количество значений не соответствует количеству колонок!');
+            $validator->errors()->add($attribute, 'The number of values does not match the number of columns!');
 
             return false;
         }
