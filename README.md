@@ -32,9 +32,17 @@
 5. Выполните команду для публикации конфигурационного файла:
 
     ```bash
-    php artisan vendor:publish --tag=config --ansi --force
+    php artisan vendor:publish --tag=admin-config --ansi --force
     ```
 
 ## Настройка
 
 Настройку видимости таблиц и столбцов можно регулировать в файле `config/admin_panel.php`.
+
+## Обновление модуля
+
+```
+git tag -a 1.0.0 -m "Commit message"
+git push origin 1.0.0
+```
+
