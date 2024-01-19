@@ -1,6 +1,6 @@
 <?php
 
-namespace Generative\AdminDatabaseProvider;
+namespace AdminDatabaseProvider;
 
 use Illuminate\Support\Facades\Route;
 use Http\Controllers\Admin\DatabaseController;
