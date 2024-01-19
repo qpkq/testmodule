@@ -11,7 +11,6 @@ use AdminDatabaseProvider\Http\Requests\Admin\SortTableRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\UpdateRecordRequest;
 use AdminDatabaseProvider\Services\DatabaseService;
 use Illuminate\Database\Query\Builder;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
 

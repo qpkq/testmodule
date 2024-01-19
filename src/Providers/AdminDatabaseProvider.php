@@ -3,6 +3,8 @@
 namespace AdminDatabaseProvider\Providers;
 
 use AdminDatabaseProvider\Http\Middleware\AdminAuthMiddleware;
+use AdminDatabaseProvider\Rules\Admin\SameCountRule;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AdminDatabaseProvider extends ServiceProvider
@@ -30,6 +32,11 @@ class AdminDatabaseProvider extends ServiceProvider
          * Middleware.
          */
         $this->app['router']->aliasMiddleware('admin.panel', AdminAuthMiddleware::class);
+
+        /*
+         * Rules.
+         */
+        Validator::extend('equality', SameCountRule::class);
     }
 
     /**
