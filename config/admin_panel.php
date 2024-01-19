@@ -18,7 +18,7 @@ return [
     | Allowed Tables
     |--------------------------------------------------------------------------
     |
-    | Tables allowed for display in the admin panel.
+    | Tables are allowed to be displayed and modified in the admin panel.
     |
     */
 
@@ -31,13 +31,13 @@ return [
     | Allowed Columns
     |--------------------------------------------------------------------------
     |
-    | Columns allowed for display in the admin panel.
+    | Columns are allowed to be displayed and modified in the admin panel.
     |
     */
 
     'allowed_columns' => [
-        'users' => [
-            'id',
-        ],
+//        'users' => [
+//            'id',
+//        ],
     ],
 ];
