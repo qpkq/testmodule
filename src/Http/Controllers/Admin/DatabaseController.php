@@ -4,7 +4,6 @@ namespace AdminDatabaseProvider\Http\Controllers\Admin;
 
 use AdminDatabaseProvider\Services\DatabaseService;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseController extends Controller
 {
