@@ -1,7 +1,3 @@
 # test-module
-# module
-# module
-# module
-# module
-# module
-# module
+
+php artisan vendor:publish --tag=config
