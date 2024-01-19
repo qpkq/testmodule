@@ -2,11 +2,11 @@
 
 namespace AdminDatabaseProvider\Http\Controllers\Admin;
 
-use AdminDatabaseProvider\Http\Requests\CreateRecordRequest;
-use AdminDatabaseProvider\Http\Requests\DeleteRecordRequest;
-use AdminDatabaseProvider\Http\Requests\GetTableRequest;
-use AdminDatabaseProvider\Http\Requests\SortTableRequest;
-use AdminDatabaseProvider\Http\Requests\UpdateRecordRequest;
+use AdminDatabaseProvider\Http\Requests\Admin\CreateRecordRequest;
+use AdminDatabaseProvider\Http\Requests\Admin\DeleteRecordRequest;
+use AdminDatabaseProvider\Http\Requests\Admin\GetTableRequest;
+use AdminDatabaseProvider\Http\Requests\Admin\SortTableRequest;
+use AdminDatabaseProvider\Http\Requests\Admin\UpdateRecordRequest;
 use AdminDatabaseProvider\Services\DatabaseService;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
