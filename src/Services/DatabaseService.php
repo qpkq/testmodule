@@ -197,7 +197,13 @@ class DatabaseService
 
                 DB::table($data['table'])
                     ->where('id', $data['record_id'])
-                    ->update($data['properties']);
+                    ->update(array_intersect_key(
+                            $data['properties'],
+                            array_flip(
+                                $this->allowed_columns[$data['table']]
+                            )
+                        )
+                    );
 
                 DB::commit();
 
