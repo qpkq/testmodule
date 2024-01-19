@@ -63,7 +63,7 @@ class DatabaseController extends Controller
      */
     public function sortTable(SortTableRequest $request)
     {
-        return $this->service->sortTable($request->all());
+        return $this->service->sortTable($request->validated());
     }
 
     /**
