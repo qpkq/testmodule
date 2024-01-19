@@ -12,6 +12,25 @@ use Illuminate\Support\Facades\Schema;
 class DatabaseService
 {
     /**
+     * Allowed tables to view.
+     */
+    protected array $allowed_columns;
+
+    /**
+     * Allowed columns to view.
+     */
+    protected array $allowed_tables;
+
+    /**
+     * DatabaseService constructor.
+     */
+    public function __construct()
+    {
+        $this->allowed_tables   = config('admin_panel.allowed_tables');
+        $this->allowed_columns  = config('admin_panel.allowed_columns');
+    }
+
+    /**
      * Get all database tables.
      *
      * @return array
@@ -19,7 +38,7 @@ class DatabaseService
     public function getTables(): array
     {
         return Arr::map(array_values(array_filter(Schema::getAllTables(), function ($table) {
-            return in_array(reset($table), config('admin_panel.allowed_tables'));
+            return in_array(reset($table), $this->allowed_tables);
         })), function ($table) {
             return [
                 'title' => reset($table),
@@ -35,9 +54,9 @@ class DatabaseService
      */
     public function getTable(string $title): array
     {
-        if (in_array($title, AllowedTables::TABLES) && Schema::hasTable($title)) {
+        if (in_array($title, $this->allowed_tables) && Schema::hasTable($title)) {
             return DB::table($title)
-                ->select(AllowedTables::COLUMNS[$title])
+                ->select($this->allowed_columns[$title])
                 ->get()
                 ->toArray();
         }
