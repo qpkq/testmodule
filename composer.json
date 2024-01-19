@@ -1,6 +1,5 @@
 {
   "name": "generative/admin-database-provider",
-  "version": "1.0.0",
   "description": "A module for providing access to tables for the admin panel",
   "type": "module",
   "license": "MIT",
