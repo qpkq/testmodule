@@ -111,7 +111,7 @@ class DatabaseService
         if (Schema::hasTable($data['table']) && Schema::hasColumn($data['table'], $data['column'])) {
             return DB::table($data['table'])
                 ->orderBy($data['column'], $data['sort_order'])
-                ->select(AllowedTables::COLUMNS[$data['table']])
+                ->select($this->allowed_columns[$data['table']])
                 ->get();
         }
 
