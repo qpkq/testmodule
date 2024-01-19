@@ -1,0 +1,28 @@
+{
+  "name": "generative/admin-database-provider",
+  "description": "A module for providing access to tables for the admin panel",
+  "type": "module",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anton Kornienko",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Generative\\AdminDatabaseProvider\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.1",
+    "laravel/framework": "^9.0|^10.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Providers\\AdminDatabaseProvider"
+      ]
+    }
+  }
+}
