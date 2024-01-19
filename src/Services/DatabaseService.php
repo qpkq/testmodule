@@ -2,6 +2,7 @@
 
 namespace AdminDatabaseProvider\Services;
 
+use Exception;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -126,7 +127,7 @@ class DatabaseService
      */
     public function search(array $data): array|Collection
     {
-        if (!in_array($data['table'], AllowedTables::TABLES)) {
+        if (!in_array($data['table'], $this->allowed_tables)) {
             return [];
         }
 
@@ -139,7 +140,7 @@ class DatabaseService
                     $query->orWhere($column, '=', $value);
                 }
             })
-                ->select(AllowedTables::COLUMNS[$data['table']])
+                ->select($this->allowed_columns[$data['table']])
                 ->get();
         } catch (Exception) {
             return [];

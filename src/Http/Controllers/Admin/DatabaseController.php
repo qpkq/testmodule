@@ -6,6 +6,7 @@ use AdminDatabaseProvider\Http\Requests\Admin\CreateRecordRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\DeleteRecordRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\GetTableColumnsRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\GetTableRequest;
+use AdminDatabaseProvider\Http\Requests\Admin\SearchRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\SortTableRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\UpdateRecordRequest;
 use AdminDatabaseProvider\Services\DatabaseService;
@@ -69,12 +70,12 @@ class DatabaseController extends Controller
     /**
      * Search through multiple columns in the database.
      *
-     * @param Request $request
+     * @param SearchRequest $request
      * @return Collection
      */
-    public function search(Request $request)
+    public function search(SearchRequest $request)
     {
-        return $this->service->search($request->all());
+        return $this->service->search($request->validated());
     }
 
     /**
