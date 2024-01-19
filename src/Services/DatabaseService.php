@@ -18,7 +18,11 @@ class DatabaseService
      */
     public function getTables(): array
     {
-        return Arr::map(Schema::getAllTables(), function ($table) {
+        $allowedTables = config('admin_panel.allowed_tables');
+
+        return Arr::map(array_filter(Schema::getAllTables(), function ($table) use ($allowedTables) {
+            return in_array(reset($table), $allowedTables);
+        }), function ($table) {
             return [
                 'title' => reset($table),
             ];
