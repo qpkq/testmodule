@@ -11,11 +11,11 @@ use Http\Controllers\Admin\DatabaseController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [DatabaseController::class, 'index']);
+//Route::get('/admin', [DatabaseController::class, 'index']);
 
-//Route::group(['prefix' => 'api', 'middleware' => []], function () {
-//    Route::get('/admin', [DatabaseController::class, 'index']);
-//});
+Route::group(['prefix' => 'api', 'middleware' => []], function () {
+    Route::get('/admin', [DatabaseController::class, 'index']);
+});
 
 //Route::group(["prefix" => "api", 'middleware' => ['web']], function () {
 //    Route::group(["prefix" => "dashboard"], function () {
