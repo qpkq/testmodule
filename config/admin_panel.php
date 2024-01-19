@@ -36,8 +36,8 @@ return [
     */
 
     'allowed_columns' => [
-//        'users' => [
-//            'id',
-//        ],
+        'users' => [
+            'id',
+        ],
     ],
 ];

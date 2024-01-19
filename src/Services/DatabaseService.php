@@ -49,14 +49,20 @@ class DatabaseService
     /**
      * Get database table columns by title.
      *
-     * @param string $title
+     * @param string $table
      * @return array
      */
-    public function getTable(string $title): array
+    public function getTable(string $table): array
     {
-        if (in_array($title, $this->allowed_tables) && Schema::hasTable($title)) {
-            return DB::table($title)
-                ->select($this->allowed_columns[$title])
+        if (
+            in_array($table, $this->allowed_tables)     &&
+            isset($this->allowed_columns[$table])       &&
+            !empty($this->allowed_columns[$table])      &&
+            Schema::hasTable($table)                    &&
+            Schema::hasColumns($table, $this->allowed_columns[$table])
+        ) {
+            return DB::table($table)
+                ->select($this->allowed_columns[$table])
                 ->get()
                 ->toArray();
         }
@@ -67,13 +73,11 @@ class DatabaseService
     /**
      * Getting all columns of a table.
      *
-     * @param array $data
+     * @param string $table
      * @return array
      */
-    public function getTableColumns(array $data): array
+    public function getTableColumns(string $table): array
     {
-        $table = $data['table'];
-
         if (Schema::hasTable($table)) {
             $columnInfo = DB::select("DESCRIBE $table");
 

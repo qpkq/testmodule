@@ -4,6 +4,7 @@ namespace AdminDatabaseProvider\Http\Controllers\Admin;
 
 use AdminDatabaseProvider\Http\Requests\Admin\CreateRecordRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\DeleteRecordRequest;
+use AdminDatabaseProvider\Http\Requests\Admin\GetTableColumnsRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\GetTableRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\SortTableRequest;
 use AdminDatabaseProvider\Http\Requests\Admin\UpdateRecordRequest;
@@ -46,12 +47,12 @@ class DatabaseController extends Controller
     /**
      * Getting all columns of a table.
      *
-     * @param Request $request
+     * @param GetTableColumnsRequest $request
      * @return array
      */
-    public function getTableColumns(Request $request)
+    public function getTableColumns(GetTableColumnsRequest $request)
     {
-        return $this->service->getTableColumns($request->all());
+        return $this->service->getTableColumns($request->validated()['table']);
     }
 
     /**
