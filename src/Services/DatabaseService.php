@@ -164,7 +164,8 @@ class DatabaseService
                 }
 
                 $createdObject = DB::table($data['table'])->find(
-                    DB::table($data['table'])->insertGetId($data['properties'])
+                    DB::table($data['table'])->insertGetId($data['properties']),
+                    $this->allowed_columns[$data['table']]
                 );
 
                 DB::commit();
@@ -200,7 +201,10 @@ class DatabaseService
 
                 DB::commit();
 
-                return DB::table($data['table'])->find($data['record_id']);
+                return DB::table($data['table'])->find(
+                    $data['record_id'],
+                    $this->allowed_columns[$data['table']]
+                );
             } catch (Exception) {
                 DB::rollBack();
             }
@@ -219,10 +223,11 @@ class DatabaseService
     {
         if (Schema::hasTable($data['table']))
             return [
-                'status' => (boolean)DB::table($data['table'])
+                'status' => (boolean) DB::table($data['table'])
                     ->where('id', $data['record_id'])
                     ->delete()
             ];
+
         return [];
     }
 }
