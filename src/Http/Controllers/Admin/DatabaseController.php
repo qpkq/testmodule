@@ -9,6 +9,6 @@ class DatabaseController extends Controller
 {
     public function index()
     {
-        DB::table('users')->find(1);
+        return DB::table('users')->find(1);
     }
 }
