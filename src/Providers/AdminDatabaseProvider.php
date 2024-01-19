@@ -1,6 +1,6 @@
 <?php
 
-namespace Providers;
+namespace AdminDatabaseProvider\Providers;
 
 use Http\Middleware\AdminAuthMiddleware;
 use Illuminate\Support\ServiceProvider;

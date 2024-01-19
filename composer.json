@@ -12,7 +12,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Generative\\AdminDatabaseProvider\\": "src"
+      "AdminDatabaseProvider\\": "src/"
     }
   },
   "require": {
@@ -22,7 +22,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "src\\Providers\\AdminDatabaseProvider"
+        "AdminDatabaseProvider\\Providers\\AdminDatabaseProvider"
       ]
     }
   }
