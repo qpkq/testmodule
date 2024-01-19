@@ -3,7 +3,15 @@
 namespace AdminDatabaseProvider\Http\Controllers\Admin;
 
 use AdminDatabaseProvider\Services\DatabaseService;
+use App\Http\Requests\AdminPanel\CreateRecordRequest;
+use App\Http\Requests\AdminPanel\DeleteRecordRequest;
+use App\Http\Requests\AdminPanel\GetTableRequest;
+use App\Http\Requests\AdminPanel\SortTableRequest;
+use App\Http\Requests\AdminPanel\UpdateRecordRequest;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Collection;
 
 class DatabaseController extends Controller
 {
@@ -15,8 +23,89 @@ class DatabaseController extends Controller
     ) {
     }
 
+    /**
+     * Get all database tables.
+     *
+     * @return array
+     */
     public function getTables()
     {
         return $this->service->getTables();
+    }
+
+    /**
+     * Get database table columns by title.
+     *
+     * @return array
+     */
+    public function getTable(GetTableRequest $request)
+    {
+        return $this->service->getTable($request->validated()['table']);
+    }
+
+    /**
+     * Getting all columns of a table.
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function getTableColumns(Request $request)
+    {
+        return $this->service->getTableColumns($request->all());
+    }
+
+    /**
+     * Sort table by specified field.
+     *
+     * @param SortTableRequest $request
+     * @return array|Collection
+     */
+    public function sortTable(SortTableRequest $request)
+    {
+        return $this->service->sortTable($request->all());
+    }
+
+    /**
+     * Search through multiple columns in the database.
+     *
+     * @param Request $request
+     * @return Collection
+     */
+    public function search(Request $request)
+    {
+        return $this->service->search($request->all());
+    }
+
+    /**
+     * Create a record in the specified table.
+     *
+     * @param CreateRecordRequest $request
+     * @return array|Builder|mixed
+     */
+    public function createRecord(CreateRecordRequest $request)
+    {
+        return $this->service->createRecord($request->validated());
+    }
+
+    /**
+     * Update a record in the specified table.
+     *
+     * @param UpdateRecordRequest $request
+     * @return mixed
+     */
+    public function updateRecord(UpdateRecordRequest $request)
+    {
+        return $this->service->updateRecord($request->validated());
+    }
+
+    /**
+     * Delete a record in the specified table.
+     *
+     * @param DeleteRecordRequest $request
+     * @return array|bool
+     */
+    public function destroyRecord(DeleteRecordRequest $request)
+    {
+        return $this->service->deleteRecord($request->all());
     }
 }

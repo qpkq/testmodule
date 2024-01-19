@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Requests\AdminPanel;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateRecordRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'table'         => 'required|string',
+            'record_id'     => 'required|integer',
+            'properties'    => 'required|array',
+        ];
+    }
+}
