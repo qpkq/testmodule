@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/admin', [DatabaseController::class, 'index']);
 
-Route::group(['prefix' => 'api', 'middleware' => ['auth:admin-panel']], function () {
+Route::group(['prefix' => 'api', 'middleware' => ['admin-panel']], function () {
     Route::get('/admin', [DatabaseController::class, 'index']);
 });
 

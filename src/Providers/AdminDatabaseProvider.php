@@ -22,7 +22,7 @@ class AdminDatabaseProvider extends ServiceProvider
         /*
          * Middleware.
          */
-        $this->app['router']->aliasMiddleware('auth:admin-panel', AdminAuthMiddleware::class);
+        $this->app['router']->aliasMiddleware('admin-panel', AdminAuthMiddleware::class);
     }
 
     /**
