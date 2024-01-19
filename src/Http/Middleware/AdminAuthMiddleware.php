@@ -18,7 +18,7 @@ class AdminAuthMiddleware
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        if ($request->header('Authorization') !== config('app.admin_panel_token')) {
+        if ($request->header('Authorization') !== config('admin_panel.token')) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
