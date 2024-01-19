@@ -18,7 +18,7 @@ class AdminDatabaseProvider extends ServiceProvider
          * Configs.
          */
         $this->publishes([
-            __DIR__.'/../config/admin_panel.php' => config_path('admin_panel.php'),
+            __DIR__.'/../../config/admin_panel.php' => config_path('admin_panel.php'),
         ], 'config');
 
         /*
