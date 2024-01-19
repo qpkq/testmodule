@@ -20,9 +20,4 @@ class DatabaseController extends Controller
     {
         return $this->service->getTables();
     }
-
-    public function index()
-    {
-        return DB::table('users')->find(1);
-    }
 }

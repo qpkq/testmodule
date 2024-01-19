@@ -11,39 +11,15 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::group(['prefix' => 'api', 'middleware' => ['admin-panel']], function () {
-    Route::get('/admin', [DatabaseController::class, 'index']);
+Route::group(['prefix' => 'api', 'middleware' => ['admin.panel']], function () {
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/tables', [DatabaseController::class, 'getTables']);
+        Route::get('/table', [DatabaseController::class, 'getTable']);
+        Route::get('/table/columns', [DatabaseController::class, 'getTableColumns']);
+        Route::get('/table/sort', [DatabaseController::class, 'sortTable']);
+        Route::get('/table/search', [DatabaseController::class, 'search']);
+        Route::post('/record/create', [DatabaseController::class, 'createRecord']);
+        Route::post('/record/update', [DatabaseController::class, 'updateRecord']);
+        Route::delete('/record/delete', [DatabaseController::class, 'destroyRecord']);
+    });
 });
-
-//Route::group(["prefix" => "api", 'middleware' => ['web']], function () {
-//    Route::group(["prefix" => "dashboard"], function () {
-//        Route::group(["prefix" => "v1"], function () {
-//            Route::group(['middleware' => ['auth.api', 'auth.url', 'check.permissions', 'check.devices']], function () {
-//                /*
-//                 * Blog
-//                 */
-//                Route::group(["prefix" => "blog"], function () {
-//                    Route::group(["prefix" => "categories"], function () {
-//                        Route::get('/', [CategoryController::class, 'get'])->name('dashboard.blog.get');
-//                        Route::get('/view', [CategoryController::class, 'view'])->name('dashboard.blog.categories_view');
-//                        Route::post('/create', [CategoryController::class, 'create'])->name('dashboard.blog.categories_create');
-//                        Route::post('/update', [CategoryController::class, 'update'])->name('dashboard.blog.categories_update');
-//                        Route::post('/delete', [CategoryController::class, 'delete'])->name('dashboard.blog.categories_delete');
-//                    });
-//
-//                    Route::group(["prefix" => "posts"], function () {
-//                        Route::get('/', [PostController::class, 'get'])->name('dashboard.blog.get');
-//                        Route::get('/view', [PostController::class, 'view'])->name('dashboard.blog.posts_view');
-//                        Route::post('/create', [PostController::class, 'create'])->name('dashboard.blog.posts_create');
-//                        Route::post('/update', [PostController::class, 'update'])->name('dashboard.blog.posts_update');
-//                        Route::post('/delete', [PostController::class, 'delete'])->name('dashboard.blog.posts_delete');
-//                    });
-//
-//                    Route::group(["prefix" => "tags"], function () {
-//                        Route::get('/', [PostsTagController::class, 'get'])->name('dashboard.tags.get');
-//                    });
-//                });
-//            });
-//        });
-//    });
-//});
